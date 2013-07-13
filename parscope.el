@@ -81,9 +81,7 @@
           (forward-sexp)
           (move-overlay ps-overlay start (point))
           (list start (point))))
-    ('error 
-     (message (format "PS Error: %s" ps-error))
-     (move-overlay ps-overlay (point) (point)))))
+    ('error (move-overlay ps-overlay (point) (point)))))
 
 (defun ps/update-scope ()
   (when parscope-mode
