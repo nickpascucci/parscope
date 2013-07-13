@@ -6,7 +6,7 @@
 ;; Created: 22 Jun 2013
 ;; Keywords: tools
 ;; Version: 0.1.0
-;; URL: https://gist.github.com/nickpascucci/5842987
+;; URL: https://github.com/nickpascucci/ParScope
 
 ;; This program is free software; you can redistribute it and/or
 ;; modify it under the terms of the GNU General Public License
@@ -81,5 +81,7 @@
 
 (defun ps/detach-hooks ()
   (remove-hook 'post-command-hook #'ps/update-scope t))
+
+(provide 'parscope)
 
 ;;; parscope.el ends here
