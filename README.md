@@ -22,8 +22,7 @@ file to your load path and add this to your init file:
 To enable *parscope* for the current buffer, use **M-x
 parscope-mode**. *parscope* will automatically highlight the current
 S-expression's scope. Customize the appearance of the overlay by
-*tweaking parscope-overlay-face*.
+tweaking *parscope-overlay-face*.
 
 ## TODOs
-+ [x] Don't barf on strings. SHA: 9c287934907a8075cc720df975c1f9619a3de632
-+ [ ] Mark current scope?
++ [ ] Mark current scope
