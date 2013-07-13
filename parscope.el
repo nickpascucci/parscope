@@ -46,8 +46,6 @@
   "Face used to highlight the current scope."
   :group 'parscope)
 
-;; Only define backward-up-sexp if the user doesn't already have it.
-;; This way we can use it without clobbering custom implementations.
 (defun ps/backward-up-sexp (&optional arg)
   "Move backwards up to the start of the current S-expression or string."
   (interactive "p")
