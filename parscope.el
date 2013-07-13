@@ -46,6 +46,18 @@
   "Face used to highlight the current scope."
   :group 'parscope)
 
+;; Only define backward-up-sexp if the user doesn't already have it.
+;; This way we can use it without clobbering custom implementations.
+(defun ps/backward-up-sexp (&optional arg)
+  "Move backwards up to the start of the current S-expression or string."
+  (interactive "p")
+  (let ((ppss (syntax-ppss))
+        (arg (or arg 1)))
+    (cond ((elt ppss 3)
+           (goto-char (elt ppss 8))
+           (ps/backward-up-sexp (1- arg)))
+          ((backward-up-list arg)))))
+
 (defun ps/enable-disable ()
   (if parscope-mode
       (ps/init)
@@ -62,14 +74,15 @@
 
 (defun ps/set-scope-overlay ()
   (interactive)
-  (condition-case nil
-    (save-excursion
-      (backward-up-list)
-      (let ((start (point)))
-        (forward-sexp)
-        (move-overlay ps-overlay start (point))
-        (list start (point))))
-    (error
+  (condition-case ps-error
+      (save-excursion
+        (ps/backward-up-sexp)
+        (let ((start (point)))
+          (forward-sexp)
+          (move-overlay ps-overlay start (point))
+          (list start (point))))
+    ('error 
+     (message (format "PS Error: %s" ps-error))
      (move-overlay ps-overlay (point) (point)))))
 
 (defun ps/update-scope ()
