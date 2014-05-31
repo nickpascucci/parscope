@@ -41,7 +41,7 @@
   nil "ParScope" nil
   (ps/enable-disable))
 
-(defface parscope-overlay-face
+(defface ps-overlay-face
   '((default :background "#07272D"))
   "Face used to highlight the current scope."
   :group 'parscope)
