@@ -23,6 +23,3 @@ To enable *parscope* for the current buffer, use **M-x
 parscope-mode**. *parscope* will automatically highlight the current
 S-expression's scope. Customize the appearance of the overlay by
 tweaking *parscope-overlay-face*.
-
-## TODOs
-+ [ ] Mark current scope
